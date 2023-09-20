@@ -13,4 +13,9 @@ apiUrl = "https://localhost:7130/api/Message"
   addMessage(message:any){
     return this.http.post(this.apiUrl,message);
   }
+
+  getAllMessage()
+  {
+    return this.http.get(this.apiUrl);
+  }
 }
