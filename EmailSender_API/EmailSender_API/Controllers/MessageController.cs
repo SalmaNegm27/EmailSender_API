@@ -39,7 +39,11 @@ namespace EmailSender_API.Controllers
 
             _context.Add(message);
            await _context.SaveChangesAsync();
-            return Ok("Message Addes Successfully");
+            var response = new
+            {
+                Message = "Message Added Successfully"
+            };
+            return Ok(response);
 
         }
     }

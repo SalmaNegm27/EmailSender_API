@@ -3,10 +3,12 @@
       <div class="responsive-container-block container">
         <div class="responsive-cell-block wk-ipadp-6 wk-mobile-12 wk-desk-5 wk-tab-9" id="i6df">
           <div class="form-wrapper">
-            <input class="input input-element" name="Subject" placeholder="Subject">
-            <textarea class="textinput input-element" placeholder="Message"></textarea>
+            <input [(ngModel)]="subject" class="input input-element" name="Subject" placeholder="Subject">
+            <textarea [(ngModel)]="content" class="textinput input-element" placeholder="Message">
+
+            </textarea>
             <div class="d-flex justify-content-center">
-                <button class="button">
+                <button class="button" (click)="sendMessage()">
                   Send
                 </button>
             </div>
