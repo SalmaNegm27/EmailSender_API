@@ -1,17 +1,20 @@
-<div class="email-card">
+<div class="container mt-5">
+  <div class="email-card">
     <div class="email-header">
       <p class="email-subject">Subject: {{ message.subject }}</p>
     </div>
     <div class="email-content">
-      <p class="email-message">Message:</p>
-      <!-- Message content here -->
+      <p class="email-message">Message:{{message.content}} </p>
+ 
     </div>
     <div class="email-form">
-      <form>
+      <form  (submit)="sendEmails($event)">
         <label for="emails">Email Addresses:</label>
-        <input type="text" id="emails" name="emails" />
+        <input  [(ngModel)]="emailAddresses" type="text" id="emails" name="emails" />
         <button type="submit">Save Email</button>
       </form>
     </div>
   </div>
+</div>
+
   

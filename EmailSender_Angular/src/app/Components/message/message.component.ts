@@ -31,10 +31,7 @@ get getMessageContent() {
 }
 
   sendMessage(e:any) {
-    const message = {
-      content: this.content,
-      subject: this.subject
-    }
+    
     if(this.messageForm.status== 'VALID')
     {
       e.preventDefault();
