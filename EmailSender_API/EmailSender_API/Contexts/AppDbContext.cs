@@ -1,7 +1,4 @@
-﻿using EmailSender_API.Models;
-using Microsoft.EntityFrameworkCore;
-
-namespace EmailSender_API.Contexts
+﻿namespace EmailSender_API.Contexts
 {
     public class AppDbContext : DbContext
     {
@@ -9,8 +6,8 @@ namespace EmailSender_API.Contexts
             : base(options)
         {
         }
-     
 
         public DbSet<Message> Messages { get; set; }
+        public DbSet<Email> Emails { get; set; }
     }
 }

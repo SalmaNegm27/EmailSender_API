@@ -1,12 +1,4 @@
-﻿using EmailSender_API.Contexts;
-using EmailSender_API.Models;
-using EmailSender_API.Repositories.MessageRepository;
-using EmailSender_API.ViewModel;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-
-namespace EmailSender_API.Controllers
+﻿namespace EmailSender_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -24,7 +16,7 @@ namespace EmailSender_API.Controllers
             var message = await _messageRepository.GetAllAsync();
             return Ok(message);
         }
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<ActionResult> GetMessageById(Guid id)
         {
             var message = await _messageRepository.GetById(id);
@@ -47,13 +39,6 @@ namespace EmailSender_API.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            var message = new Message()
-            {
-                Subject = messageViewModel.Subject,
-                Content = messageViewModel.Content
-            };
-
             await _messageRepository.Add(messageViewModel);
             var response = new
             {

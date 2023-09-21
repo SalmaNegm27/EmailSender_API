@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'src/app/Services/Message.Service';
 import { SharedDataService } from 'src/app/Services/shared-data.service';
 
@@ -15,7 +15,7 @@ export class AllMessagesComponent implements OnInit {
   message :any;
 
   constructor(private messageService :MessageService,
-    private activatedRoute: ActivatedRoute,private sharedDataService:SharedDataService){}
+    private activatedRoute: ActivatedRoute,private sharedDataService:SharedDataService, private router : Router ,){}
   ngOnInit(){
 
     this.messageService.getAllMessage().subscribe((response) => { this.messages = response });
@@ -26,18 +26,6 @@ export class AllMessagesComponent implements OnInit {
   
   }
 
-//   viewDeatails()
-//   {
-// this.messageId=this.activatedRoute.snapshot.paramMap.get('id');
-// this.messageService.getMessageById(this.messageId).subscribe({
-//   next:(response)=>{
-//     this.message=response
-//   },
-//   error:(error)=>{
-//     console.log(error);
-//   },
-//      });
-//   }
 
 deleteMessage(messageId: any) {
   this.messageService.deleteMessage(messageId).subscribe(() => {

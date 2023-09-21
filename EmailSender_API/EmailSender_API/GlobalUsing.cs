@@ -1,0 +1,9 @@
+﻿global using EmailSender_API.Models;
+global using System.ComponentModel.DataAnnotations;
+global using EmailSender_API.Contexts;
+global using EmailSender_API.Repositories.EmailRepository;
+global using EmailSender_API.Repositories.MessageRepository;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.AspNetCore.Mvc;
+global using EmailSender_API.ViewModel;
+global using System.ComponentModel.DataAnnotations.Schema;

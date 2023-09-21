@@ -1,8 +1,4 @@
-﻿using EmailSender_API.Contexts;
-using EmailSender_API.Models;
-using EmailSender_API.ViewModel;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿
 
 namespace EmailSender_API.Repositories.MessageRepository
 {
@@ -15,7 +11,8 @@ namespace EmailSender_API.Repositories.MessageRepository
             _context = context;
         }
 
-        public async Task Add(MessageViewModel messageViewModel)
+        //add new message to databas
+        public virtual async Task Add(MessageViewModel messageViewModel)
         {
             var message = new Message()
             {
@@ -28,7 +25,8 @@ namespace EmailSender_API.Repositories.MessageRepository
                 
         }
 
-        public  async Task Delete(Guid id)
+        //delete message from database
+        public virtual async Task Delete(Guid id)
         {
             var message = await _context.Messages.FirstOrDefaultAsync(m => m.Id == id);
             if (message != null)
@@ -38,15 +36,18 @@ namespace EmailSender_API.Repositories.MessageRepository
             }
         }
 
-        public async Task<IEnumerable<Message>> GetAllAsync()
+        // get all messages from database
+        public virtual async Task<IEnumerable<Message>> GetAllAsync()
         {
             return await _context.Messages.ToListAsync();
            
         }
 
-        public async Task<Message> GetById(Guid id)
+        //get Message By Id of Message
+        public virtual async Task<Message> GetById(Guid id)
         {
             var message=await _context.Messages.FirstOrDefaultAsync(m => m.Id == id);
+
             return message;
            
            

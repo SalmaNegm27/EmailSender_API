@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace EmailSender_API.ViewModel
+﻿namespace EmailSender_API.ViewModel
 {
     public class MessageViewModel
     {

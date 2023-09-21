@@ -1,9 +1,4 @@
-﻿using EmailSender_API.Models;
-using EmailSender_API.ViewModel;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-
-namespace EmailSender_API.Repositories.MessageRepository
+﻿namespace EmailSender_API.Repositories.MessageRepository
 {
     public interface IMessageRepository
     {

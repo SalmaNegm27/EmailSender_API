@@ -1,0 +1,67 @@
+/* CSS styles for the email card */
+.email-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #f7f7f7;
+    max-width: 400px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the card horizontally */
+  }
+  
+  /* CSS styles for the email header (subject) */
+  .email-header {
+    background-color: #007bff; /* Header background color */
+    color: #fff; /* Header text color */
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+  }
+  
+  .email-subject {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  /* CSS styles for the email content */
+  .email-content {
+    padding: 10px;
+  }
+  
+  .email-message {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  /* CSS styles for the email form */
+  .email-form {
+    padding: 10px;
+  }
+  
+  .email-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .email-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .email-form button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .email-form button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  

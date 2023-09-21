@@ -1,20 +1,36 @@
 <div class="arch_contact_us_duplicate">
-    <div class="responsive-container-block big-container">
-      <div class="responsive-container-block container">
-        <div class="responsive-cell-block wk-ipadp-6 wk-mobile-12 wk-desk-5 wk-tab-9" id="i6df">
-          <div class="form-wrapper">
-            <input [(ngModel)]="subject" class="input input-element" name="Subject" placeholder="Subject">
-            <textarea [(ngModel)]="content" class="textinput input-element" placeholder="Message">
-
-            </textarea>
+  <div class="responsive-container-block big-container">
+    <div class="responsive-container-block container">
+      <div class="responsive-cell-block wk-ipadp-6 wk-mobile-12 wk-desk-5 wk-tab-9" id="i6df">
+        <div class="form-wrapper">
+          <form [formGroup]="messageForm" (submit)="sendMessage($event)">
+            <input formControlName="subject" class="input input-element" name="Subject" placeholder="Subject">
+            <ng-container *ngIf="getMessageSubject.touched">
+              <div *ngIf="getMessageSubject.hasError('required')" id="subjectError" class="form-text text-danger">
+                Subject is Required
+              </div>
+              <div *ngIf="getMessageSubject.hasError('max')" id="subjectError" class="form-text text-danger">
+                Maximum Character is 100
+              </div>
+              {{ getMessageSubject.errors | json }}
+            </ng-container>
+            <textarea formControlName="content" class="textinput input-element" placeholder="Message"></textarea>
+            <ng-container *ngIf="getMessageContent.touched">
+              <div *ngIf="getMessageContent.hasError('required')" id="contentError" class="form-text text-danger">
+                Content is Required
+              </div>
+  
+            </ng-container>
             <div class="d-flex justify-content-center">
-                <button class="button" (click)="sendMessage()">
-                  Send
-                </button>
+              <button class="button" type="submit">
+                Send
+              </button>
             </div>
-          </div>
+          </form>
           
         </div>
       </div>
     </div>
   </div>
+</div>
+<app-all-messages></app-all-messages>
