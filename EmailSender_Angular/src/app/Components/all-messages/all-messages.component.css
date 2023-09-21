@@ -1,0 +1,19 @@
+.card{
+    width: 30vw;
+   
+}
+.row {
+    --bs-gutter-x: 60rem;
+    --bs-gutter-y: 0;
+}
+ .btn {
+    height: 30px;
+    min-width: 80px;
+    font-size: 16px;
+    color: white;
+    border-width: 1px;
+    margin-bottom: 0px;
+    background-color: #b0ab4d;
+    border-style: none;
+
+  }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'src/app/Services/Message.Service';
+import { SharedDataService } from 'src/app/Services/shared-data.service';
 
 @Component({
   selector: 'app-all-messages',
@@ -14,9 +15,14 @@ export class AllMessagesComponent implements OnInit {
   message :any;
 
   constructor(private messageService :MessageService,
-    private activatedRoute: ActivatedRoute,){}
+    private activatedRoute: ActivatedRoute,private sharedDataService:SharedDataService){}
   ngOnInit(){
+
     this.messageService.getAllMessage().subscribe((response) => { this.messages = response });
+
+    this.sharedDataService.messageAdded$.subscribe(() => {
+      this.messageService.getAllMessage().subscribe((response) => { this.messages = response })
+    });
   
   }
 

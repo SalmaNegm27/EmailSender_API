@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'src/app/Services/Message.Service';
+import { SharedDataService } from 'src/app/Services/shared-data.service';
+
+
+
 
 @Component({
   selector: 'app-message',
@@ -10,7 +14,7 @@ export class MessageComponent implements OnInit {
   subject: string = '';
   content: string = '';
   
-  constructor(private messageService :MessageService){}
+  constructor(private messageService :MessageService, private sharedDataService :SharedDataService){}
 
   ngOnInit(): void {
     
@@ -26,6 +30,8 @@ export class MessageComponent implements OnInit {
         console.log('Message added successfully', response);
         this.subject= '';
         this.content  = '';
+
+     this.sharedDataService.notifyMessageAdded();
       },
       (error) => {
         console.error('Error adding message', error);

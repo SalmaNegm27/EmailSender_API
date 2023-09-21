@@ -1,5 +1,6 @@
 ﻿using EmailSender_API.Contexts;
 using EmailSender_API.Models;
+using EmailSender_API.Repositories.MessageRepository;
 using EmailSender_API.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,22 +12,22 @@ namespace EmailSender_API.Controllers
     [ApiController]
     public class MessageController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IMessageRepository _messageRepository;
 
-        public MessageController(AppDbContext context)
+        public MessageController(IMessageRepository messageRepository)
         {
-            _context = context;
+            _messageRepository = messageRepository;
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Message>>> GetMessages()
         {
-            var message = await _context.Messages.ToListAsync();
+            var message = await _messageRepository.GetAllAsync();
             return Ok(message);
         }
         [HttpGet("id")]
         public async Task<ActionResult> GetMessageById(Guid id)
         {
-            var message = await _context.Messages.FirstOrDefaultAsync(m => m.Id == id);
+            var message = await _messageRepository.GetById(id);
             if (message == null) return NotFound();
             return Ok(message);
         }
@@ -34,10 +35,8 @@ namespace EmailSender_API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(Guid id)
         {
-            var message = await _context.Messages.FirstOrDefaultAsync(m => m.Id == id);
-            if (message == null) return NotFound();
-            _context.Messages.Remove(message);
-            await _context.SaveChangesAsync();
+          
+           await _messageRepository.Delete(id);
             return Ok();
         }
 
@@ -55,8 +54,7 @@ namespace EmailSender_API.Controllers
                 Content = messageViewModel.Content
             };
 
-            _context.Add(message);
-           await _context.SaveChangesAsync();
+            await _messageRepository.Add(messageViewModel);
             var response = new
             {
                 Message = "Message Added Successfully"
