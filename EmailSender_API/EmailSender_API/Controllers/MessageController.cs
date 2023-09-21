@@ -15,14 +15,32 @@ namespace EmailSender_API.Controllers
 
         public MessageController(AppDbContext context)
         {
-              _context = context;
+            _context = context;
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Message>>> GetMessages()
         {
-            var message= await _context.Messages.ToListAsync();
+            var message = await _context.Messages.ToListAsync();
             return Ok(message);
         }
+        [HttpGet("id")]
+        public async Task<ActionResult> GetMessageById(Guid id)
+        {
+            var message = await _context.Messages.FirstOrDefaultAsync(m => m.Id == id);
+            if (message == null) return NotFound();
+            return Ok(message);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            var message = await _context.Messages.FirstOrDefaultAsync(m => m.Id == id);
+            if (message == null) return NotFound();
+            _context.Messages.Remove(message);
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddMessage(MessageViewModel messageViewModel)
         {

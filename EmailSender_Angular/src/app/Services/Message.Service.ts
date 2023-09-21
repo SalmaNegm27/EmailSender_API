@@ -18,4 +18,13 @@ apiUrl = "https://localhost:7130/api/Message"
   {
     return this.http.get(this.apiUrl);
   }
+
+  getMessageById(id:any)
+  {
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
+
+  deleteMessage(id: any) {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  } 
 }
