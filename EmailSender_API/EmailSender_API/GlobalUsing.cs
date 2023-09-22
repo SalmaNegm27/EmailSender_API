@@ -7,3 +7,7 @@ global using Microsoft.EntityFrameworkCore;
 global using Microsoft.AspNetCore.Mvc;
 global using EmailSender_API.ViewModel;
 global using System.ComponentModel.DataAnnotations.Schema;
+global using EmailSender_API.Services;
+global using System.Net;
+global using System.Net.Mail;
+global using System.Text;

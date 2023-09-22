@@ -12,7 +12,7 @@
               <div *ngIf="getMessageSubject.hasError('max')" id="subjectError" class="form-text text-danger">
                 Maximum Character is 100
               </div>
-              {{ getMessageSubject.errors | json }}
+             
             </ng-container>
             <textarea formControlName="content" class="textinput input-element" placeholder="Message"></textarea>
             <ng-container *ngIf="getMessageContent.touched">

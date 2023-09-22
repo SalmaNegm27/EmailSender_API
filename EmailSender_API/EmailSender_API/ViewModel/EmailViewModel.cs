@@ -1,5 +1,4 @@
-﻿
-namespace EmailSender_API.ViewModel
+﻿namespace EmailSender_API.ViewModel
 {
     public class EmailViewModel
     {

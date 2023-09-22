@@ -1,5 +1,4 @@
-﻿
-namespace EmailSender_API.Models
+﻿namespace EmailSender_API.Models
 {
     public class Email
     {

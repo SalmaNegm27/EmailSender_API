@@ -8,20 +8,16 @@ namespace EmailSender_API.Repositories.EmailRepository
         {
             _context = context;
         }
-        public virtual async Task Add(EmailViewModel emailViewModel)
+        public virtual async Task Add(Email email)
         {
-            foreach (var emailAddress in emailViewModel.EmailAdresses)
-            {
-                var email = new Email()
-                {
-                    Id = emailViewModel.Id,
-                    EmailAddress = emailAddress,
-                    MessageId = emailViewModel.MessageId,
-                };
-                _context.Add(email);
-              await  _context.SaveChangesAsync();
+            _context.Add(email);
+            await _context.SaveChangesAsync();
 
-            }
+        }
+        public virtual async Task AddRange(IEnumerable<Email> emails)
+        {
+            _context.AddRange(emails);
+            await _context.SaveChangesAsync();
 
         }
     }

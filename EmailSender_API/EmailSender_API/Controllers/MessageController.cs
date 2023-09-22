@@ -10,12 +10,14 @@
         {
             _messageRepository = messageRepository;
         }
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Message>>> GetMessages()
         {
             var message = await _messageRepository.GetAllAsync();
             return Ok(message);
         }
+
         [HttpGet("{id}")]
         public async Task<ActionResult> GetMessageById(Guid id)
         {
@@ -27,15 +29,15 @@
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(Guid id)
         {
-          
-           await _messageRepository.Delete(id);
+
+            await _messageRepository.Delete(id);
             return Ok();
         }
 
         [HttpPost]
         public async Task<IActionResult> AddMessage(MessageViewModel messageViewModel)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }

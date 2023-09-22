@@ -22,7 +22,7 @@ namespace EmailSender_API.Repositories.MessageRepository
 
             _context.Add(message);
             await _context.SaveChangesAsync();
-                
+
         }
 
         //delete message from database
@@ -31,8 +31,8 @@ namespace EmailSender_API.Repositories.MessageRepository
             var message = await _context.Messages.FirstOrDefaultAsync(m => m.Id == id);
             if (message != null)
             {
-            _context.Messages.Remove(message);
-            await _context.SaveChangesAsync();
+                _context.Messages.Remove(message);
+                await _context.SaveChangesAsync();
             }
         }
 
@@ -40,17 +40,17 @@ namespace EmailSender_API.Repositories.MessageRepository
         public virtual async Task<IEnumerable<Message>> GetAllAsync()
         {
             return await _context.Messages.ToListAsync();
-           
+
         }
 
         //get Message By Id of Message
         public virtual async Task<Message> GetById(Guid id)
         {
-            var message=await _context.Messages.FirstOrDefaultAsync(m => m.Id == id);
+            var message = await _context.Messages.FirstOrDefaultAsync(m => m.Id == id);
 
             return message;
-           
-           
+
+
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿
-namespace EmailSender_API.Repositories.EmailRepository
+﻿namespace EmailSender_API.Repositories.EmailRepository
 {
     public interface IEmailRepository
     {
-        Task Add(EmailViewModel email);
+        Task Add(Email email);
+        Task AddRange(IEnumerable<Email> emails);
     }
 }
